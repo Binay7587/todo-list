@@ -4,26 +4,31 @@ import "bootstrap/dist/css/bootstrap.css";
 import { FaPlus, FaTrash } from "react-icons/fa"
 
 const App = () => {
-    const [todoList, setTodoList] = useState([]);
+    const initialData = localStorage.getItem("todos") ? JSON.parse(localStorage.getItem("todos")) : [];
+    const [todoList, setTodoList] = useState(initialData);
     const [text, setText] = useState("");
 
     // Function to add todo item
     const addTodo = () => {
-        setTodoList([
+        const todos = [
             ...todoList,
             {
                 data: text,
                 date: new Date().toLocaleString().split(",")[0],
                 isCompleted: false
             }
-        ]);
+        ];
+        setTodoList(todos);
         setText("");
+
+        localStorage.setItem("todos", JSON.stringify(todos));
     };
 
     // Function to toggle todo item completion
     const toggleTodoCompletion = (idx) => {
         const updatedTodo = todoList.map((todo, index) => index === idx ? { ...todo, isCompleted: !todo.isCompleted } : todo);
         setTodoList(updatedTodo);
+        localStorage.setItem("todos", JSON.stringify(updatedTodo));
     }
 
     // Function to delete todo item
@@ -34,6 +39,7 @@ const App = () => {
                 return index === idx ? false : true;
             })
             setTodoList(updatedTodo);
+            localStorage.setItem("todos", JSON.stringify(updatedTodo));
         }
     }
 
