@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-image: url(/public/images/todo-bg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.container {
+  width: 450px;
+  background-color: #303443;
+  margin: auto;
+  margin-top: 50px;
+  border-radius: 10px;
+  padding: 30px;
+}
+
+.container h3 {
+  color: #fff;
+  font-size: 30px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.inputField {
+  margin: 20px 0;
+  width: 100%;
+  display: flex;
+  height: 45px;
+}
+
+.inputField input {
+  width: 85%;
+  height: 100%;
+  outline: none;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  font-size: 17px;
+  padding-left: 15px;
+  transition: all 0.3s ease;
+}
+
+.inputField input:focus {
+  border-color: #fbb03b;
+}
+
+.inputField button {
+  width: 50px;
+  height: 100%;
+  border: none;
+  color: #fff;
+  margin-left: 5px;
+  font-size: 21px;
+  outline: none;
+  background: #e3af5b;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.inputField button:hover {
+  background: #fbb03b;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #ccc;
+}
+
+.filters span {
+  margin: 0 8px;
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filters span:hover {
+  color: #fbb03b;
+}
+
+.filters span.active {
+  color: #fbb03b;
+  border-bottom: #fbb03b 2px solid;
+}
+
+/* Todo List */
+.todo-list {
+  margin-top: 20px;
+  margin-right: 5px;
+  padding: 0;
+}
+
+.todo-list .task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  color: white;
+  list-style: none;
+  font-size: 16px;
+  margin-bottom: 18px;
+  padding-bottom: 16px;
+  align-items: flex-start;
+  border-bottom: 1px solid #ccc;
+}
+
+.task .task-date {
+  font-size: 12px;
+  color: #ccc;
+}
