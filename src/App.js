@@ -13,6 +13,10 @@ const App = () => {
 
     // Function to add todo item
     const addTodo = () => {
+        if (!text) {
+            notify("Please enter todo.", 'error');
+            return;
+        }
         const todos = [
             ...localStorage.getItem("todos") ? JSON.parse(localStorage.getItem("todos")) : [],
             {
@@ -25,7 +29,7 @@ const App = () => {
         setText("");
 
         localStorage.setItem("todos", JSON.stringify(todos));
-        notify("Todo added successfully", 'success');
+        notify("Todo added successfully.", 'success');
     };
 
     // Function to toggle todo item completion
@@ -43,7 +47,7 @@ const App = () => {
             const updatedTodo = todoList.filter((_, index) => {
                 return index === idx ? false : true;
             })
-            notify("Todo deleted successfully", 'success');
+            notify("Todo deleted successfully.", 'success');
             setTodoList(updatedTodo);
             localStorage.setItem("todos", JSON.stringify(updatedTodo));
         }
