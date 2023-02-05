@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.css";
 import { FaPlus, FaTrash } from "react-icons/fa"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
 const App = () => {
@@ -23,6 +25,7 @@ const App = () => {
         setText("");
 
         localStorage.setItem("todos", JSON.stringify(todos));
+        notify("Todo added successfully", 'success');
     };
 
     // Function to toggle todo item completion
@@ -37,9 +40,10 @@ const App = () => {
     const deleteTodo = (idx) => {
         const confirm = window.confirm("Do you want to delete? ");
         if (confirm) {
-            const updatedTodo = todoList.filter((todo, index) => {
+            const updatedTodo = todoList.filter((_, index) => {
                 return index === idx ? false : true;
             })
+            notify("Todo deleted successfully", 'success');
             setTodoList(updatedTodo);
             localStorage.setItem("todos", JSON.stringify(updatedTodo));
         }
@@ -80,8 +84,33 @@ const App = () => {
         if (confirm) {
             setTodoList([]);
             localStorage.setItem("todos", JSON.stringify([]));
+            notify("All todos cleared successfully", 'success');
         }
     }
+
+    const notify = (message, type) => {
+        if (type === 'success') {
+            toast.success(message, {
+                position: "bottom-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        } else {
+            toast.error(message, {
+                position: "bottom-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
+    };
 
     return (
         <div className='container'>
@@ -110,7 +139,7 @@ const App = () => {
                 {todoList.length > 0 ? todoList.map((todo, index) => {
                     return (
                         <li key={index} className='task' onClick={() => toggleTodoCompletion(index)} onMouseEnter={() => showHideTrash(index, 'block')} onMouseLeave={() => showHideTrash(index, 'none')}>
-                            <div>
+                            <div className='description'>
                                 <span className='task-title' style={{
                                     textDecoration: todo.isCompleted ? "line-through" : "none"
                                 }}>{todo.data}</span><br />
@@ -127,6 +156,7 @@ const App = () => {
                     )
                 }) : <li className='task'>No Any Todo ...</li>}
             </ul>
+            <ToastContainer />
         </div >
     )
 }

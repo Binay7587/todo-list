@@ -118,6 +118,11 @@ body {
   border-bottom: 1px solid #ccc;
 }
 
+.task .description {
+  border-left: 5px solid #fbb03b;
+  padding-left: 15px;
+}
+
 .task .task-date {
   font-size: 12px;
   color: #ccc;
