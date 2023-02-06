@@ -19,7 +19,8 @@ body {
   width: 450px;
   background-color: #303443;
   margin: auto;
-  margin-top: 50px;
+  margin-top: 40px;
+  margin-bottom: 40px;
   border-radius: 10px;
   padding: 30px;
 }
@@ -126,4 +127,13 @@ body {
 .task .task-date {
   font-size: 12px;
   color: #ccc;
+}
+
+/* Responsive Design */
+@media (max-width: 500px) {
+  .container {
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+  }
 }
