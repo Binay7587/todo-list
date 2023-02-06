@@ -152,7 +152,7 @@ const App = () => {
                                 }}>{todo.date}</small>
                             </div>
                             <div id={`trash${index}`}>
-                                <FaTrash size="40" color="red" display={'none'} onClick={() => {
+                                <FaTrash size="25" color="#dc3545" display={'none'} onClick={() => {
                                     deleteTodo(index)
                                 }} />
                             </div>
