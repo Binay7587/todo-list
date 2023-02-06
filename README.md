@@ -38,6 +38,11 @@ Some of the future enhancement for the application are listed below.
 
 * [React.js](https://reactjs.org/)
 
+<!-- CONTRIBUTING -->
+## CONTRIBUTING
+
+Everyone is welcomed to contribute to this project. You can contribute either by submitting bugs or suggesting improvements by opening an issue on GitHub. Please see the [CONTRIBUTING](CONTRIBUTING.md) guidelines for more information.
+
 <!-- CONTACT -->
 ## Contact
 
@@ -50,6 +55,6 @@ Repository Link: [https://github.com/Binay7587/todo-list](https://github.com/Bin
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See [https://github.com/Binay7587/todo-list/tree/master/LICENSE](https://github.com/Binay7587/todo-list/tree/master/LICENSE) for more information.
+Distributed under the MIT License. See [https://github.com/Binay7587/todo-list/blob/master/LICENSE](https://github.com/Binay7587/todo-list/blob/master/LICENSE) for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
