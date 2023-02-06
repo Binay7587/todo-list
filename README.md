@@ -1,14 +1,13 @@
-<p align="center">
-<img src="./docs/todo-app.png" height="450"><br>
-<a href="https://todo-binay7587.vercel.app" target="_blank">TODO List App</a>
-</p>
+# Todo List App
+[Demo of Todo App](https://todo-binay7587.vercel.app)
+![](./docs/todo-app.png)
 
-# Todo List with Create React App
+## Summary
+A simple todo list app created with React.js, allowing users to keep track of tasks and check them off as completed. The app features a user-friendly interface for adding, deleting and marking tasks as done.
 
-A simple todo list app created with React.js
+## Motivation
 
-Check the hosted demo site. https://todo-binay7587.vercel.app
-
+The purpose of this project was to get familiar with React Hooks(useState), LocalStorage and ReactToastify.
 
 ## Setup Instructions
 
