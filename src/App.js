@@ -35,19 +35,21 @@ const App = () => {
             notify("Please enter todo.", 'error');
             return;
         }
-        setTodoList((prev) => {
-            const newList = [
-                ...prev,
-                {
-                    data: text,
-                    date: new Date().toLocaleString().split(",")[0],
-                    isCompleted: false
-                }
-            ];
-
-            setLocalStorageData("todos", newList);
-            return newList;
-        });
+        const newList = [
+            ...getLocalStorageData("todos"),
+            {
+                data: text,
+                date: new Date().toLocaleString().split(",")[0],
+                isCompleted: false
+            }
+        ];
+        setTodoList(newList);
+        setLocalStorageData("todos", newList);
+        const filters = document.getElementsByClassName('filters')[0].children;
+        for (let i = 0; i < filters.length; i++) {
+            filters[i].classList.remove('active');
+        }
+        filters[0].classList.add('active');
 
         setText("");
         notify("Todo added successfully.", 'success');
@@ -55,14 +57,13 @@ const App = () => {
 
     /**
      * @description Function to toggle todo item completion
-     * @param {number} idx 
+     * @param {object} item 
      */
-    const toggleTodoCompletion = (idx) => {
-        setTodoList((prev) => {
-            const updatedTodo = prev.map((todo, index) => index === idx ? { ...todo, isCompleted: !todo.isCompleted } : todo);
-            setLocalStorageData("todos", updatedTodo);
-            return updatedTodo;
-        });
+    const toggleTodoCompletion = (item) => {
+        const todos = getLocalStorageData("todos");
+        const updatedTodo = todos.map(todo => todo.data === item.data ? { ...todo, isCompleted: !todo.isCompleted } : todo);
+        setTodoList(updatedTodo);
+        setLocalStorageData("todos", updatedTodo);
     }
 
     /**
@@ -170,8 +171,8 @@ const App = () => {
             <ul className='todo-list'>
                 {todoList.length > 0 ? todoList.map((todo, index) => {
                     return (
-                        <li key={index} className='task' onClick={() => toggleTodoCompletion(index)} onMouseEnter={() => showHideTrash(index, 'block')} onMouseLeave={() => showHideTrash(index, 'none')}>
-                            <div className='description'>
+                        <li key={index} className='task' onMouseEnter={() => showHideTrash(index, 'block')} onMouseLeave={() => showHideTrash(index, 'none')}>
+                            <div className='description' onClick={() => toggleTodoCompletion(todo)}>
                                 <span className='task-title' style={{
                                     textDecoration: todo.isCompleted ? "line-through" : "none"
                                 }}>{todo.data}</span><br />
